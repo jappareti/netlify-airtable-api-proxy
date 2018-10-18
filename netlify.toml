@@ -1,7 +1,7 @@
 [build]
-  Command = "yarn build && yarn build:lambda"
-  Functions = "lambda"
-  Publish = "build"
+  command = "yarn build && yarn build:lambda"
+  functions = "lambda"
+  publish = "build"
 
 [template.environment]
   API_KEY = "Your secret Airtable API key"
