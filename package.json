@@ -1,6 +1,12 @@
 {
   "name": "netlify-airtable-api-proxy",
   "version": "0.1.0",
+  "author": "Jeff Appareti",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jappareti/netlify-airtable-api-proxy"
+  },
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
