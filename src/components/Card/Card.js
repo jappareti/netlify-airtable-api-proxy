@@ -22,7 +22,7 @@ class Card extends Component {
             name="on-display"
             checked={record.fields["On Display?"]}
             data-record-id={record.id}
-            onChange={this.props.toggleOnDisplay}
+            onChange={this.props.toggleOnDisplay(record.id)}
           />
           <label htmlFor="on-display">On Display</label>
         </div>

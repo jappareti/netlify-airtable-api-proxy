@@ -31,18 +31,31 @@ class App extends Component {
       });
   }
 
-  toggleOnDisplay = e => {
-    const { recordId } = e.target.dataset;
+  toggleOnDisplay = id => e => {
+    const target = e.target;
+
+    // Update the state first
+    this.setState((state => {
+      const record = state.records.filter(record => record.id === id)[0];
+      record.fields['On Display?'] = target.checked;
+      return {
+        ...state.records,
+        record
+      }
+    }))
+
+    // Update via Airtable API proxy
+    // If it fails, show the error page
     axios
       .patch("/.netlify/functions/api-proxy", {
         params: {
           url: `https://api.airtable.com/v0/${
             process.env.REACT_APP_AIRTABLE_BASE_ID
-          }/Artists/${recordId}`
+          }/Artists/${id}`
         },
         data: {
           fields: {
-            "On Display?": e.target.checked
+            "On Display?": target.checked
           }
         }
       })
