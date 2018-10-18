@@ -2,5 +2,7 @@
   Command = "yarn build && yarn build:lambda"
   Functions = "lambda"
   Publish = "build"
+  
+[template.environment]
   API_KEY = ""
   REACT_APP_AIRTABLE_BASE_ID = ""
