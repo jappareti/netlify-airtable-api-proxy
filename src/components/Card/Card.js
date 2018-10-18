@@ -20,11 +20,12 @@ class Card extends Component {
           <input
             type="checkbox"
             name="on-display"
+            id={record.id}
             checked={record.fields["On Display?"]}
-            data-record-id={record.id}
+            // data-record-id={record.id}
             onChange={this.props.toggleOnDisplay(record.id)}
           />
-          <label htmlFor="on-display">On Display</label>
+          <label htmlFor={record.id}>On Display</label>
         </div>
       </div>
     );

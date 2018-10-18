@@ -35,3 +35,8 @@
 .on-display {
   padding: 0em 1em 1em;
 }
+
+.on-display input,
+.on-display label {
+  cursor: pointer;
+}
