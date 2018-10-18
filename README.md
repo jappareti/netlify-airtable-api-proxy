@@ -4,6 +4,8 @@ This demo uses a [Netlify Function](https://www.netlify.com/docs/functions/) as 
 
 I bootstrapped the project with [Create React App](https://github.com/facebook/create-react-app).
 
+### <a href="https://suspicious-wozniak-7a2d86.netlify.com/">View Live Demo</a>
+
 ![Airtable API Proxy Demo](screenshot.jpg?raw=true)
 
 ## Buy... why?
@@ -24,9 +26,7 @@ The easiest way to get started is to deploy to Netlify! Click the button below.
 
 <a href="https://app.netlify.com/start/deploy?repository=https://github.com/jappareti/netlify-airtable-api-proxy"><img src="https://www.netlify.com/img/deploy/button.svg"></a>
 
-You'll be asked for your Airtable API Key and the Airtable Base ID.
-
-**Where is your API key?**
+You'll be prompted for your Airtable API Key and the Airtable Base ID.
 
 Your **Airtable API Key** can be found at <https://airtable.com/account> (scroll down to **<> API**)
 
