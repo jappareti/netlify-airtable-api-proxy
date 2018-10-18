@@ -1,48 +1,70 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import axios from "axios";
 import "./App.css";
 
-class LambdaDemo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { loading: false, msg: null };
+import LoadingIndicator from "./components/LoadingIndicator";
+import Error from "./components/Error";
+import Gallery from "./components/Gallery";
+
+class App extends Component {
+  state = {
+    records: [],
+    loading: false,
+    error: null
+  };
+
+  componentDidMount() {
+    this.setState({ loading: true });
+    axios
+      .get("/.netlify/functions/api-proxy", {
+        params: {
+          url: `https://api.airtable.com/v0/${
+            process.env.REACT_APP_AIRTABLE_BASE_ID
+          }/Artists`
+        }
+      })
+      .then(response =>
+        this.setState({ loading: false, records: response.data.records })
+      )
+      .catch(error => {
+        this.setState({ loading: false, error });
+      });
   }
 
-  handleClick = e => {
-    e.preventDefault();
-
-    this.setState({ loading: true });
-    fetch("/.netlify/functions/hello")
-      .then(response => response.json())
-      .then(json => this.setState({ loading: false, msg: json.msg }));
+  toggleOnDisplay = e => {
+    const { recordId } = e.target.dataset;
+    axios
+      .patch("/.netlify/functions/api-proxy", {
+        params: {
+          url: `https://api.airtable.com/v0/${
+            process.env.REACT_APP_AIRTABLE_BASE_ID
+          }/Artists/${recordId}`
+        },
+        data: {
+          fields: {
+            "On Display?": e.target.checked
+          }
+        }
+      })
+      .catch(error => {
+        this.setState({ loading: false, error });
+      });
   };
 
   render() {
-    const { loading, msg } = this.state;
+    const { records, loading, error } = this.state;
 
-    return (
-      <p>
-        <button onClick={this.handleClick}>
-          {loading ? "Loading..." : "Call Lambda"}
-        </button>
-        <br />
-        <span>{msg}</span>
-      </p>
-    );
-  }
-}
+    if (error !== null) {
+      return <Error error={error} />;
+    }
 
-class App extends Component {
-  render() {
+    if (loading) {
+      return <LoadingIndicator />;
+    }
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <LambdaDemo />
-        </header>
+        <Gallery records={records} toggleOnDisplay={this.toggleOnDisplay} />
       </div>
     );
   }

@@ -1,0 +1,7 @@
+.error-container {
+  max-width: 900px;
+  margin: 1em auto;
+  padding: 2em;
+  background: hsla(0, 75%, 94%, 1);
+  border: 2px solid hsla(0, 75%, 69%, 1);
+}

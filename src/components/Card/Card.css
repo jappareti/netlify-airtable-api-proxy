@@ -1,0 +1,37 @@
+.card {
+  background: #fff;
+  box-shadow: 0 0 0 2px hsla(0, 0%, 0%, 0.05);
+  border-radius: 7px;
+  transition: all 250ms;
+  /* padding: 1em; */
+}
+
+.artwork {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 230px;
+  white-space: nowrap;
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
+}
+
+.artwork img {
+  display: inline-block;
+  height: 100%;
+  padding-right: 0.4em;
+}
+
+.artwork img:last-child {
+  padding-right: 0em;
+}
+
+.name {
+  padding: 1em 0.7em;
+  font-weight: normal;
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.on-display {
+  padding: 0em 1em 1em;
+}
