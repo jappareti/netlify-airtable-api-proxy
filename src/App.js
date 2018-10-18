@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   getRecords = () => {
-    this.setState({loading: true})
+    this.setState({ loading: true });
     axios
       .get("/.netlify/functions/api-proxy", {
         params: {
@@ -90,16 +90,20 @@ class App extends Component {
       return <LoadingIndicator />;
     }
 
-    return (
-      <div className="App">
+    return <div className="App">
+        <h1>Airtable API Proxy Demo</h1>
         <Gallery records={records} toggleOnDisplay={this.toggleOnDisplay} />
-        {offset !== "stop" && (
-          <button onClick={this.getRecords} className="btn-more">
+        {offset !== "stop" && <button onClick={this.getRecords} className="btn-more">
             {loading ? "Loading..." : "More..."}
-          </button>
-        )}
-      </div>
-    );
+          </button>}
+        <footer>
+          Built by <a href="https://www.jeffappareti.com">Jeff Appareti</a>. View the <a href="https://github.com/jappareti/netlify-airtable-api-proxy">
+            code on github
+          </a>. View the <a href="https://airtable.com/shr13XLtk89rGnXN1">
+            Airtable Base
+          </a>.
+        </footer>
+      </div>;
   }
 }
 

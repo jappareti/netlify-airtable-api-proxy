@@ -1,3 +1,6 @@
+.App {
+  margin: 1em 2em;
+}
 .btn-more {
   cursor: pointer;
   margin: 1em auto;
@@ -16,4 +19,9 @@
 
 .btn-more:hover {
   opacity: 1;
+}
+
+footer {
+  margin: 5em 0em;
+  font-size: 0.9em;
 }
